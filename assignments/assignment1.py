@@ -1,51 +1,27 @@
+p_id=int(input("Enter product id: "))
+p_name=input("Enter product name: ")
+price=int(input("Enter product price: "))
+discount=float(input("Enter discount percentage: "))
 
-product_id = int(input("Enter Product ID : "))
+categories=input("Enter categories (comma separated): ").split(',')
 
-product_name = input("Enter Product Name : ")
+features=set(input("Enter product features (comma separated): ").split(','))
 
-price = float(input("Enter Price of the product (₹): "))
+available_stock=int(input("Enter available stock: "))
+sold_stock=int(input("Enter sold stock: "))
 
-cat_i = input("Enter Categories (comma-separated): ").split(',')
-categories = []
-for cat in cat_i:
-    categories.append(cat.strip())
-
-
-available_stock = int(input("Enter Available Stock: "))
-sold_stock = int(input("Enter Sold Stock: "))
-stock_details = (available_stock, sold_stock)
-
-
-
-discount_percentage = float(input("Enter Discount Percentage: "))
-
-features_input = input("Enter Product Features (comma-separated): ")
-product_features = set([feat.strip() for feat in features_input.split(',')])
-
-supplier_name = input("Enter Supplier Name: ")
-supplier_contact = input("Enter Supplier Contact Number: ")
-supplier_location = input("Enter Supplier Location: ")
-supplier_details = {
-    "name": supplier_name,
-    "contact": supplier_contact,
-    "location": supplier_location
+supplier={
+    "name": input("Enter supplier name: "),
+    "contact": input("Enter supplier contact: "),
+    "location": input("Enter supplier location: ")
 }
 
-print("\nProduct ID, Name, Price:", product_id, product_name, price, sep=',')
-print("Product Discount: %.2f%%" % discount_percentage)
-
-print(f"\n Product Name: {product_name}")
-print(f" Price: ₹{price}")
-print(f" Discount: {discount_percentage}%")
-print(f" Stock Available: {stock_details[0]} units")
-print(f" Units Sold: {stock_details[1]}")
-print(f" categories: {categories}")
-print(f" features: {','.join(product_features)}")
-
-
-print("\n Supplier Details: Name - {}, Contact - {}, Location - {}".format(
-    supplier_details["name"],
-    supplier_details["contact"],
-    supplier_details["location"]
-))
-
+print("\n--- Product Details ---")
+print("Product ID:", p_id, ", Name:", p_name, ", Price: ", price)
+print("Discount: %.2f%%"% discount)
+print(f"Available Stock: {available_stock} units, Sold Stock: {sold_stock} units")
+print("Categories: {}".format(categories))
+print("Features: {}".format(','.join(features)))
+print(f"\nSupplier Name: {supplier['name']}")
+print(f"Contact: {supplier['contact']}")
+print(f"Location: {supplier['location']}")
